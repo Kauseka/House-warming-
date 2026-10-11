@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Housewarming Invitation | SKPNJ Residence</title>
+
+    <!-- Open Graph Meta Tags for WhatsApp Link Preview (iOS & Android) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SKPNJ Residence Griha Pravesham">
+    <meta property="og:title" content="Griha Pravesham Invitation | SKPNJ Residence">
+    <meta property="og:description" content="We cordially invite you to our Housewarming ceremony at SKPNJ Residence on Friday, 20th November 2026.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="600">
+    <meta name="theme-color" content="#2b080c">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Great+Vibes&family=Mukta+Malar:wght@400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', 'Mukta Malar', sans-serif;
+            background-color: #2b080c;
+            color: #fdf8ed;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-cursive { font-family: 'Great Vibes', cursive; }
+
+        .bg-traditional-pattern {
+            background-color: #3d0a10;
+            background-image: radial-gradient(#d4af37 0.75px, transparent 0.75px), radial-gradient(#d4af37 0.75px, #3d0a10 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        @keyframes flicker {
+            0%, 100% { transform: scale(1) rotate(-1deg); opacity: 0.9; }
+            50% { transform: scale(1.15) rotate(1deg); opacity: 1; filter: drop-shadow(0 0 12px #ff9800); }
+        }
+
+        .flame {
+            animation: flicker 1.2s infinite ease-in-out;
+            transform-origin: center bottom;
+        }
+
+        .temple-door-left {
+            transform-origin: left center;
+            transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .temple-door-right {
+            transform-origin: right center;
+            transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .doors-open .temple-door-left {
+            transform: rotateY(-110deg);
+        }
+        .doors-open .temple-door-right {
+            transform: rotateY(110deg);
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .hotspot-ring {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #2b080c; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
+    </style>
+
+    <script>
+        const translations = {
+            en: {
+                brand: "SKPNJ Residence",
+                ganesha: "Shree Ganeshay Namah",
+                title: "Warm Welcome",
+                subtitle: "Step into our sanctuary of joy and divine blessings",
+                prompt: "Tap Temple Gate to Enter Our New Abode",
+                shrineWelcome: "Welcome to SKPNJ Residence",
+                shrineSub: "Click to step inside",
+                gateFooter: "Griha Pravesham",
+                houseTag: "Explore Details",
+                houseHeading: "SKPNJ Residence",
+                houseSub: "Touch the glowing badges below to discover event details",
+                family: "SKPNJ Residence",
+                hotspotWhat: "1. WHAT?",
+                hotspotWhen: "2. WHEN?",
+                hotspotWhere: "3. WHERE?",
+                welcomeTitle: "Welcoming You With Open Hearts",
+                welcomeMsg: '"With hearts full of gratitude and joy, we welcome you to share in the warmth and divine blessings of SKPNJ Residence. Your presence, love, and good wishes mean the world to us as we step into this new chapter of our lives!"',
+                contactHosts: "Contact Hosts (Tap to Call or WhatsApp)",
+                shareBtn: "Share Invitation on WhatsApp",
+                host1: "Sankarakumar",
+                host2: "Pankajam",
+                call: "Call",
+                wa: "WhatsApp",
+                footer: "Designed with love for SKPNJ Residence Griha Pravesham | Warmly inviting you",
+                
+                mWhatTitle: "1. WHAT?",
+                mWhatSub: "Event Ceremony",
+                mWhatMain: "House Warming",
+
+                mWhenTitle: "2. WHEN?",
+                mWhenSub: "Date & Program Timings",
+                lblDate: "Date",
+                valDate: "Friday, 20th November 2026",
+                lblHomam: "Homam",
+                valHomam: "5:00 AM - 8:00 AM",
+                lblMilk: "Boiling Milk",
+                valMilk: "9:15 AM - 10:15 AM",
+                lblBreakfast: "Breakfast",
+                valBreakfast: "7:00 AM - 9:00 AM",
+                lblLunch: "Lunch",
+                valLunch: "12:00 PM - 1:00 PM",
+
+                mWhereTitle: "3. WHERE?",
+                mWhereSub: "Venue Address",
+                mWhereHouse: "SKPNJ Residence Address",
+                mWhereAddress: "5th Cross Thanumalayan Nagar Suchindrum Nagercoil Kanniyakumari District",
+                mWhereBtn: "Open Location in Google Maps",
+                btnClose: "Close"
+            },
+            ta: {
+                brand: "SKPNJ ரெசிடென்ஸ்",
+                ganesha: "ஸ்ரீ கணேசாய நமஹ",
+                title: "அன்புடன் அழைக்கின்றோம்",
+                subtitle: "எங்கள் புதிய இல்லத்திற்கு உங்களை அன்போடு வரவேற்கிறோம்",
+                prompt: "கோவிலைத் தொட்டு நுழைவாயிலைத் திறக்கவும்",
+                shrineWelcome: "SKPNJ ரெசிடென்ஸ் இல்லத்திற்கு நல்வரவு",
+                shrineSub: "உள்ளே செல்ல கிளிக் செய்யவும்",
+                gateFooter: "கிரகப்பிரவேச விழா",
+                houseTag: "விவரங்களை அறிய",
+                houseHeading: "SKPNJ ரெசிடென்ஸ்",
+                houseSub: "நிகழ்ச்சி விவரங்களை அறிய பொத்தான்களைத் தொடவும்",
+                family: "SKPNJ ரெசிடென்ஸ்",
+                hotspotWhat: "1. என்ன நிகழ்ச்சி?",
+                hotspotWhen: "2. எப்போது?",
+                hotspotWhere: "3. எங்கே?",
+                welcomeTitle: "அன்புடன் உங்களை வரவேற்கிறோம்",
+                welcomeMsg: '"எங்கள் புதிய SKPNJ ரெசிடென்ஸ் இல்ல கிரகப்பிரவேச விழாவிற்கு உங்களை அன்போடு அழைக்கிறோம். உங்கள் வருகையும் நல்வாழ்த்துகளும் எங்களுக்கு பேரானந்தம் அளிக்கும்!"',
+                contactHosts: "தொடர்பு கொள்ள வேண்டிய நபர்கள் (அழைக்க அல்லது வாட்ஸ்அப் செய்ய கிளிக் செய்யவும்)",
+                shareBtn: "வாட்ஸ்அப்பில் அழைப்பிதழைப் பகிரவும்",
+                host1: "சங்கரகுமார்",
+                host2: "பங்கஜம்",
+                call: "அழைக்க",
+                wa: "வாட்ஸ்அப்",
+                footer: "அன்புடன் அழைக்கும் குடும்பத்தினர் | SKPNJ ரெசிடென்ஸ்",
+                
+                mWhatTitle: "1. என்ன நிகழ்ச்சி?",
+                mWhatSub: "நிகழ்ச்சி விவரம்",
+                mWhatMain: "கிரகப்பிரவேசம்",
+
+                mWhenTitle: "2. எப்போது?",
+                mWhenSub: "தேதி மற்றும் நேரங்கள்",
+                lblDate: "தேதி",
+                valDate: "வெள்ளிக்கிழமை, 20 நவம்பர் 2026",
+                lblHomam: "ஹோமம்",
+                valHomam: "காலை 5:00 - 8:00",
+                lblMilk: "பால் காய்ச்சுதல்",
+                valMilk: "காலை 9:15 - 10:15",
+                lblBreakfast: "காலை சிற்றுண்டி",
+                valBreakfast: "காலை 7:00 - 9:00",
+                lblLunch: "மதிய விருந்து",
+                valLunch: "மதியம் 12:00 - 1:00",
+
+                mWhereTitle: "3. எங்கே?",
+                mWhereSub: "நிகழ்ச்சி நடைபெறும் இடம்",
+                mWhereHouse: "SKPNJ ரெசிடென்ஸ் முகவரி",
+                mWhereAddress: "5-வது குறுக்கு தெரு, தாணுமாலயன் நகர், சுசீந்திரம், நாகர்கோவில், கன்னியாகுமரி மாவட்டம்.",
+                mWhereBtn: "கூகிள் மேப்பில் பார்க்க",
+                btnClose: "மூடவும்"
+            },
+            hi: {
+                brand: "SKPNJ निवास",
+                ganesha: "श्री गणेशाय नमः",
+                title: "हार्दिक स्वागत",
+                subtitle: "हमारे नए घर के शुभ अवसर पर आपका स्वागत है",
+                prompt: "मंदिर के द्वार खोलकर प्रवेश करें",
+                shrineWelcome: "SKPNJ निवास में आपका स्वागत है",
+                shrineSub: "अंदर जाने के लिए क्लिक करें",
+                gateFooter: "गृह प्रवेश समारोह",
+                houseTag: "विवरण देखें",
+                houseHeading: "SKPNJ निवास",
+                houseSub: "कार्यक्रम का विवरण जानने के लिए बटन दबाएं",
+                family: "SKPNJ निवास",
+                hotspotWhat: "1. क्या कार्यक्रम है?",
+                hotspotWhen: "2. कब है?",
+                hotspotWhere: "3. कहाँ है?",
+                welcomeTitle: "खुले दिल से स्वागत है",
+                welcomeMsg: '"हमारे नए SKPNJ निवास के गृह प्रवेश समारोह में आपकी उपस्थिति हमारे लिए अत्यंत हर्ष का विषय होगी। कृपया पधारकर हमें अपना आशीर्वाद दें!"',
+                contactHosts: "संपर्क करें (कॉल या व्हाट्सएप करने के लिए दबाएं)",
+                shareBtn: "व्हाट्सएप पर निमंत्रण साझा करें",
+                host1: "शंकरकुमार",
+                host2: "पंकजम",
+                call: "कॉल करें",
+                wa: "व्हाट्सएप",
+                footer: "SKPNJ निवास गृह प्रवेश समारोह के लिए स्नेहपूर्ण निमंत्रण",
+
+                mWhatTitle: "1. क्या कार्यक्रम है?",
+                mWhatSub: "समारोह",
+                mWhatMain: "गृह प्रवेश",
+
+                mWhenTitle: "2. कब है?",
+                mWhenSub: "तिथि और समय",
+                lblDate: "तिथि",
+                valDate: "शुक्रवार, 20 नवंबर 2026",
+                lblHomam: "होमम / पूजा",
+                valHomam: "सुबह 5:00 - 8:00",
+                lblMilk: "दूध उबालना",
+                valMilk: "सुबह 9:15 - 10:15",
+                lblBreakfast: "नाश्ता",
+                valBreakfast: "सुबह 7:00 - 9:00",
+                lblLunch: "दोपहर का भोजन",
+                valLunch: "दोपहर 12:00 - 1:00",
+
+                mWhereTitle: "3. कहाँ है?",
+                mWhereSub: "स्थान का पता",
+                mWhereHouse: "SKPNJ निवास का पता",
+                mWhereAddress: "5वां क्रॉस थानुमलयन नगर, सुचिंद्रम, नागरकोइल, कन्याकुमारी जिला",
+                mWhereBtn: "गूगल मैप्स में खोलें",
+                btnClose: "बंद करें"
+            }
+        };
+
+        window.changeLanguage = function(langKey) {
+            const t = translations[langKey];
+            if (!t) return;
+
+            const btnEn = document.getElementById('lang-en');
+            const btnTa = document.getElementById('lang-ta');
+            const btnHi = document.getElementById('lang-hi');
+
+            const activeClass = "px-3 py-1 rounded-full text-white font-semibold transition-all bg-amber-600 shadow-md";
+            const inactiveClass = "px-3 py-1 rounded-full text-amber-200/70 font-semibold transition-all hover:text-amber-300";
+
+            if (btnEn) btnEn.className = (langKey === 'en') ? activeClass : inactiveClass;
+            if (btnTa) btnTa.className = (langKey === 'ta') ? activeClass : inactiveClass;
+            if (btnHi) btnHi.className = (langKey === 'hi') ? activeClass : inactiveClass;
+
+            const setTxt = (id, txt) => {
+                const el = document.getElementById(id);
+                if (el) el.innerText = txt;
+            };
+
+            setTxt('nav-brand', t.brand);
+            setTxt('txt-ganesha', t.ganesha);
+            setTxt('txt-title', t.title);
+            setTxt('txt-subtitle', t.subtitle);
+            setTxt('txt-prompt', t.prompt);
+            setTxt('txt-shrine-welcome', t.shrineWelcome);
+            setTxt('txt-shrine-sub', t.shrineSub);
+            setTxt('txt-gate-footer', t.gateFooter);
+
+            setTxt('txt-house-tag', t.houseTag);
+            setTxt('txt-house-heading', t.houseHeading);
+            setTxt('txt-house-sub', t.houseSub);
+            setTxt('txt-family-name', t.family);
+            setTxt('txt-hotspot-what', t.hotspotWhat);
+            setTxt('txt-hotspot-when', t.hotspotWhen);
+            setTxt('txt-hotspot-where', t.hotspotWhere);
+
+            setTxt('txt-welcome-title', t.welcomeTitle);
+            setTxt('txt-welcome-msg', t.welcomeMsg);
+            setTxt('txt-contact-hosts', t.contactHosts);
+            setTxt('txt-share-btn', t.shareBtn);
+            setTxt('lbl-host1-name', t.host1);
+            setTxt('lbl-host2-name', t.host2);
+
+            document.querySelectorAll('.btn-call-text').forEach(el => el.innerText = t.call);
+            document.querySelectorAll('.btn-wa-text').forEach(el => el.innerText = t.wa);
+            document.querySelectorAll('.btn-close').forEach(el => el.innerText = t.btnClose);
+            setTxt('txt-footer', t.footer);
+
+            setTxt('m-what-title', t.mWhatTitle);
+            setTxt('m-what-sub', t.mWhatSub);
+            setTxt('m-what-main', t.mWhatMain);
+
+            setTxt('m-when-title', t.mWhenTitle);
+            setTxt('m-when-sub', t.mWhenSub);
+            setTxt('m-label-date', t.lblDate);
+            setTxt('m-val-date', t.valDate);
+            setTxt('m-label-homam', t.lblHomam);
+            setTxt('m-val-homam', t.valHomam);
+            setTxt('m-label-milk', t.lblMilk);
+            setTxt('m-val-milk', t.valMilk);
+            setTxt('m-label-breakfast', t.lblBreakfast);
+            setTxt('m-val-breakfast', t.valBreakfast);
+            setTxt('m-label-lunch', t.lblLunch);
+            setTxt('m-val-lunch', t.valLunch);
+
+            setTxt('m-where-title', t.mWhereTitle);
+            setTxt('m-where-sub', t.mWhereSub);
+            setTxt('m-where-house', t.mWhereHouse);
+            setTxt('m-where-address', t.mWhereAddress);
+            setTxt('m-where-btn', t.mWhereBtn);
+        };
+
+        window.openTempleDoors = function() {
+            const templeContainer = document.getElementById('temple-gateway');
+            if (templeContainer) {
+                templeContainer.classList.add('doors-open');
+            }
+
+            if (typeof confetti === 'function') {
+                try {
+                    confetti({ particleCount: 120, spread: 90, origin: { y: 0.6 } });
+                } catch(e){}
+            }
+
+            setTimeout(() => {
+                const stageTemple = document.getElementById('stage-temple');
+                const stageHouse = document.getElementById('stage-house');
+
+                if (stageTemple) stageTemple.classList.add('hidden');
+                if (stageHouse) {
+                    stageHouse.classList.remove('hidden');
+                    setTimeout(() => stageHouse.classList.remove('opacity-0'), 50);
+                }
+            }, 600);
+        };
+
+        window.shareOnWhatsApp = function() {
+            // Get current active link or clean origin + pathname
+            let currentUrl = localStorage.getItem('skpnj_invitation_url');
+            if (!currentUrl) {
+                // Fallback to window.location.href, cleaning up any hash or junk
+                currentUrl = window.location.href.split('#')[0];
+            }
+
+            // Encode share text with link
+            let shareText = "🪔 *Griha Pravesham Invitation - SKPNJ Residence* 🏡\n\nWe warmly invite you and your family to join us on Friday, 20th November 2026 for our Housewarming ceremony!\n\n⏰ *Program Timings:*\n• Homam: 5:00 AM - 8:00 AM\n• Milk Boiling: 9:15 AM - 10:15 AM\n• Breakfast: 7:00 AM - 9:00 AM\n• Lunch: 12:00 PM - 1:00 PM\n\n📍 *Venue:*\n5th Cross Thanumalayan Nagar, Suchindrum, Nagercoil, Kanniyakumari District\n\n📞 *Contact:* +91 9742086868 / +91 6379269859\n\n👇 *Click link to view Interactive Invitation Card:*\n" + currentUrl;
+
+            // Try Web Share API first (on mobile/tablets)
+            if (navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                navigator.share({
+                    title: 'SKPNJ Residence Griha Pravesham Invitation',
+                    text: shareText,
+                    url: currentUrl
+                }).catch(() => {
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank');
+                });
+            } else {
+                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank');
+            }
+        };
+
+        window.configureShareUrl = function() {
+            let currentSaved = localStorage.getItem('skpnj_invitation_url') || window.location.href.split('#')[0];
+            let newUrl = prompt("Enter your live hosted web link (e.g., Vercel, Netlify, or your deployed URL so invitees can open it across devices):\n\nNote: Temporary sandbox preview URLs expire or cannot be opened directly by other phones on WhatsApp. Please paste your permanent live link here:", currentSaved);
+            if (newUrl !== null) {
+                if (newUrl.trim() === "") {
+                    localStorage.removeItem('skpnj_invitation_url');
+                    alert("Custom invitation link cleared. Using current page URL.");
+                } else {
+                    localStorage.setItem('skpnj_invitation_url', newUrl.trim());
+                    alert("Live web link saved successfully! When you share on WhatsApp, this link will now be sent to your guests.");
+                }
+            }
+        };
+
+        window.openModal = function(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.remove('hidden');
+        };
+
+        window.closeModal = function(id) {
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.add('hidden');
+        };
+    </script>
+</head>
+<body class="bg-traditional-pattern min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-red-950">
+
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 py-3 bg-red-950/90 backdrop-blur-md border-b border-amber-500/30 flex justify-between items-center shadow-lg">
+        <div class="flex items-center space-x-2">
+            <span class="text-xl">🪔</span>
+            <span class="font-cinzel text-amber-300 font-bold tracking-wider text-xs sm:text-sm" id="nav-brand">SKPNJ Residence</span>
+        </div>
+
+        <div class="flex items-center space-x-2">
+            <div class="flex bg-red-900/90 rounded-full p-1 border border-amber-500/40 text-xs gap-1">
+                <button onclick="window.changeLanguage('en')" id="lang-en" class="px-2.5 py-1 rounded-full text-white font-semibold transition-all bg-amber-600 shadow-md">English</button>
+                <button onclick="window.changeLanguage('ta')" id="lang-ta" class="px-2.5 py-1 rounded-full text-amber-200/70 font-semibold transition-all hover:text-amber-300">தமிழ்</button>
+                <button onclick="window.changeLanguage('hi')" id="lang-hi" class="px-2.5 py-1 rounded-full text-amber-200/70 font-semibold transition-all hover:text-amber-300">हिंदी</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-16 pb-12 flex-grow flex flex-col items-center justify-center relative px-3">
+
+        <!-- Stage 1: Temple Entrance -->
+        <section id="stage-temple" class="w-full max-w-3xl flex flex-col items-center text-center transition-all duration-700 py-6 my-auto">
+            
+            <div class="mb-4">
+                <div class="flex justify-center items-center mb-3">
+                    <div class="relative group cursor-pointer">
+                        <div class="absolute -inset-3 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 rounded-full blur-md opacity-80 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                        
+                        <!-- Detailed Lord Ganesha SVG Graphic -->
+                        <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full border-2 border-amber-300 shadow-2xl overflow-hidden bg-gradient-to-b from-red-950 via-amber-950 to-red-900 p-2 flex items-center justify-center">
+                            <svg viewBox="0 0 200 200" class="w-full h-full filter drop-shadow-[0_4px_8px_rgba(212,175,55,0.8)] animate-pulse" style="animation-duration: 3s;" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="ganeshaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#fef08a" />
+                                        <stop offset="50%" stop-color="#f59e0b" />
+                                        <stop offset="100%" stop-color="#b45309" />
+                                    </linearGradient>
+                                    <linearGradient id="haloGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#fde047" />
+                                        <stop offset="100%" stop-color="#ea580c" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <circle cx="100" cy="100" r="90" fill="url(#haloGlow)" opacity="0.15" />
+                                <g opacity="0.3" stroke="#f59e0b" stroke-width="1.5">
+                                    <line x1="100" y1="10" x2="100" y2="190" />
+                                    <line x1="10" y1="100" x2="190" y2="100" />
+                                    <line x1="36" y1="36" x2="164" y2="164" />
+                                    <line x1="36" y1="164" x2="164" y2="36" />
+                                </g>
+
+                                <path d="M70 60 L100 15 L130 60 L118 65 L100 30 L82 65 Z" fill="url(#ganeshaGold)" stroke="#fef08a" stroke-width="1"/>
+                                <ellipse cx="100" cy="45" rx="10" ry="12" fill="#dc2626" />
+                                <circle cx="100" cy="22" r="4" fill="#ffffff" />
+                                <rect x="75" y="60" width="50" height="8" rx="2" fill="#f59e0b" />
+
+                                <path d="M75 68 C40 50 20 85 45 115 C65 130 80 110 80 90 Z" fill="url(#ganeshaGold)" opacity="0.9" />
+                                <path d="M70 75 C45 60 30 85 50 108" fill="none" stroke="#dc2626" stroke-width="2" />
+                                <path d="M125 68 C160 50 180 85 155 115 C135 130 120 110 120 90 Z" fill="url(#ganeshaGold)" opacity="0.9" />
+                                <path d="M130 75 C155 60 170 85 150 108" fill="none" stroke="#dc2626" stroke-width="2" />
+
+                                <ellipse cx="100" cy="80" rx="25" ry="20" fill="url(#ganeshaGold)"/>
+
+                                <path d="M92 68 Q100 62 108 68 Q100 85 92 68 Z" fill="#dc2626" />
+                                <line x1="88" y1="67" x2="112" y2="67" stroke="#fef08a" stroke-width="2" />
+                                <circle cx="100" cy="72" r="2.5" fill="#fef08a" />
+
+                                <path d="M82 78 Q90 73 95 80 Q88 82 82 78 Z" fill="#1e293b" />
+                                <circle cx="89" cy="78" r="1" fill="#ffffff" />
+                                <path d="M118 78 Q110 73 105 80 Q112 82 118 78 Z" fill="#1e293b" />
+                                <circle cx="111" cy="78" r="1" fill="#ffffff" />
+
+                                <path d="M96 88 L92 98 L98 98 Z" fill="#ffffff" />
+                                <path d="M100 86 C105 105 125 110 120 132 C115 150 92 145 92 135 C92 128 102 128 102 135 Q102 140 110 136 C115 125 96 115 94 88 Z" fill="url(#ganeshaGold)" />
+                                <ellipse cx="100" cy="130" rx="4" ry="5" fill="#fef08a" />
+
+                                <g transform="translate(135, 110)">
+                                    <path d="M 0 20 C 10 10 20 0 15 -10 C 10 -15 0 -5 -5 10 Z" fill="url(#ganeshaGold)" />
+                                    <circle cx="5" cy="-2" r="4" fill="#dc2626" />
+                                </g>
+
+                                <g transform="translate(50, 115)">
+                                    <ellipse cx="0" cy="0" rx="8" ry="6" fill="url(#ganeshaGold)" />
+                                    <path d="M-4 -2 Q0 -10 4 -2 Q0 3 -4 -2 Z" fill="#fef08a" stroke="#d97706" stroke-width="0.8" />
+                                </g>
+
+                                <path d="M68 120 C60 145 50 165 75 175 C100 180 125 180 145 168 C155 155 140 125 132 120 C115 135 85 135 68 120 Z" fill="#b91c1c" />
+                                <path d="M78 130 Q100 150 122 130" stroke="url(#ganeshaGold)" stroke-width="3" fill="none" />
+                                
+                                <path d="M40 178 Q70 165 100 178 Q130 165 160 178 Q100 200 40 178 Z" fill="#f43f5e" />
+                                <path d="M55 175 Q100 160 145 175 Q100 190 55 175 Z" fill="#fb7185" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="text-amber-400 font-cinzel tracking-widest text-xs uppercase block mb-1" id="txt-ganesha">Shree Ganeshay Namah</span>
+                <h1 class="font-cursive text-4xl sm:text-6xl text-amber-300 drop-shadow-md" id="txt-title">Warm Welcome</h1>
+                <p class="text-xs sm:text-sm text-amber-200/80 font-light mt-1 max-w-md mx-auto" id="txt-subtitle">Step into our sanctuary of joy and divine blessings</p>
+            </div>
+
+            <div class="mb-6 animate-bounce cursor-pointer" onclick="window.openTempleDoors()">
+                <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-red-950 font-bold text-xs sm:text-sm shadow-xl border-2 border-amber-200 hover:scale-105 transition transform">
+                    <span>👆</span> 
+                    <span id="txt-prompt">Tap Temple Gate to Enter Our New Abode</span>
+                </span>
+            </div>
+
+            <div id="temple-gateway" onclick="window.openTempleDoors()" class="relative w-full max-w-md h-[380px] sm:h-[430px] bg-gradient-to-b from-red-950 to-amber-950 rounded-t-full border-4 border-amber-500/60 shadow-2xl p-4 flex flex-col justify-end items-center cursor-pointer overflow-hidden group perspective-1000">
+                
+                <div class="absolute -top-1 left-1/2 -translate-x-1/2 flex flex-col items-center">
+                    <div class="w-4 h-8 bg-amber-400 rounded-t-full"></div>
+                    <div class="w-12 h-4 bg-amber-500 rounded-full shadow-lg"></div>
+                    <div class="text-2xl">🪔</div>
+                </div>
+
+                <div class="absolute inset-x-6 top-16 bottom-0 bg-gradient-to-t from-amber-600/40 via-amber-500/20 to-transparent rounded-t-full flex items-center justify-center">
+                    <div class="text-center p-4 transform group-hover:scale-110 transition duration-700">
+                        <div class="text-6xl sm:text-7xl mb-2">🏡</div>
+                        <h3 class="font-cinzel text-amber-200 font-bold text-lg sm:text-xl" id="txt-shrine-welcome">Welcome to SKPNJ Residence</h3>
+                        <p class="text-xs text-amber-300/80 mt-1" id="txt-shrine-sub">Click to step inside</p>
+                    </div>
+                </div>
+
+                <div id="temple-doors-container" class="absolute inset-x-4 top-14 bottom-0 flex justify-between pointer-events-none z-10">
+                    <div class="temple-door-left w-1/2 h-full bg-gradient-to-r from-red-900 via-red-950 to-amber-900 border-r-2 border-amber-500/50 flex flex-col justify-center items-end pr-2 sm:pr-4 shadow-2xl relative">
+                        <div class="absolute inset-2 border border-amber-500/30 rounded-tl-full flex flex-col items-center justify-around py-8">
+                            <div class="text-amber-400/60 text-2xl">🕉️</div>
+                            <div class="w-8 h-8 rounded-full border border-amber-400/40 flex items-center justify-center">
+                                <div class="w-3 h-3 bg-amber-400 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="temple-door-right w-1/2 h-full bg-gradient-to-l from-red-900 via-red-950 to-amber-900 border-l-2 border-amber-500/50 flex flex-col justify-center items-start pl-2 sm:pl-4 shadow-2xl relative">
+                        <div class="absolute inset-2 border border-amber-500/30 rounded-tr-full flex flex-col items-center justify-around py-8">
+                            <div class="text-amber-400/60 text-2xl">卐</div>
+                            <div class="w-8 h-8 rounded-full border border-amber-400/40 flex items-center justify-center">
+                                <div class="w-3 h-3 bg-amber-400 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-2 left-6 z-20 flex flex-col items-center">
+                    <div class="w-3 h-4 bg-amber-400 rounded-full flame"></div>
+                    <div class="text-2xl -mt-2">🪔</div>
+                </div>
+                <div class="absolute bottom-2 right-6 z-20 flex flex-col items-center">
+                    <div class="w-3 h-4 bg-amber-400 rounded-full flame"></div>
+                    <div class="text-2xl -mt-2">🪔</div>
+                </div>
+
+                <div class="z-20 mb-3 bg-red-950/90 px-4 py-1.5 rounded-full border border-amber-400/60 text-xs text-amber-300 font-medium">
+                    ✨ <span id="txt-gate-footer">Griha Pravesham</span> ✨
+                </div>
+            </div>
+        </section>
+
+        <!-- Stage 2: House Interactive Card -->
+        <section id="stage-house" class="w-full max-w-4xl hidden opacity-0 transition-all duration-700 my-auto flex flex-col items-center">
+            
+            <div class="text-center mb-6">
+                <span class="text-amber-400 font-cinzel text-xs tracking-widest uppercase" id="txt-house-tag">Explore Details</span>
+                <h2 class="text-3xl sm:text-5xl font-cursive text-amber-300" id="txt-house-heading">SKPNJ Residence</h2>
+                <p class="text-xs sm:text-sm text-amber-200/80 mt-1" id="txt-house-sub">Touch the glowing badges below to discover event details</p>
+            </div>
+
+            <div class="relative w-full max-w-3xl bg-gradient-to-b from-amber-950/60 via-red-950/80 to-red-950 rounded-3xl p-6 border-2 border-amber-500/40 shadow-2xl overflow-hidden flex flex-col items-center">
+                
+                <div class="relative w-full h-[360px] sm:h-[420px] rounded-2xl border border-amber-500/30 flex items-center justify-between p-4 overflow-hidden bg-cover bg-center shadow-inner" style="background-image: linear-gradient(rgba(43,8,12,0.85), rgba(43,8,12,0.85)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80');">
+                    
+                    <!-- Left Plantain Tree SVG Illustration -->
+                    <div class="flex flex-col items-center z-10 w-24 sm:w-32 self-end">
+                        <svg viewBox="0 0 200 300" class="w-full h-auto drop-shadow-[0_5px_10px_rgba(0,0,0,0.8)] animate-pulse" style="animation-duration: 4s;" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M90 300 Q95 180 90 100 L110 100 Q105 180 110 300 Z" fill="#4a3525"/>
+                            <path d="M95 280 Q100 200 95 120" stroke="#332215" stroke-width="3" fill="none"/>
+                            <path d="M100 120 Q30 80 10 30 Q50 60 100 100 Z" fill="#2d6a4f"/>
+                            <path d="M100 100 Q170 60 190 20 Q150 50 100 90 Z" fill="#40916c"/>
+                            <path d="M100 80 Q20 30 5 -10 Q50 20 100 70 Z" fill="#52b788"/>
+                            <path d="M100 70 Q180 30 195 -5 Q140 20 100 60 Z" fill="#74c69d"/>
+                            <path d="M100 50 Q100 -20 100 -40 Q100 -20 100 40 Z" fill="#52b788"/>
+                            <g transform="translate(85, 110)">
+                                <path d="M15 0 Q20 20 15 40" stroke="#d4af37" stroke-width="4" fill="none"/>
+                                <ellipse cx="10" cy="15" rx="6" ry="12" fill="#ffd166" transform="rotate(-30 10 15)"/>
+                                <ellipse cx="20" cy="22" rx="6" ry="12" fill="#ffd166" transform="rotate(15 20 22)"/>
+                                <ellipse cx="15" cy="32" rx="6" ry="12" fill="#ffb703" transform="rotate(5 15 32)"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Center House & Hotspots -->
+                    <div class="relative z-20 flex flex-col items-center justify-center flex-grow px-2">
+                        <div class="relative mb-3 group flex flex-col items-center">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-30 flex gap-1 pointer-events-none">
+                                <span class="text-xl sm:text-2xl animate-pulse">🌼</span>
+                                <span class="text-xl sm:text-2xl animate-pulse delay-100">🌸</span>
+                                <span class="text-xl sm:text-2xl animate-pulse delay-200">🌼</span>
+                                <span class="text-xl sm:text-2xl animate-pulse delay-300">🌸</span>
+                                <span class="text-xl sm:text-2xl animate-pulse">🌼</span>
+                            </div>
+
+                            <!-- SVG Realistic Indian Villa Structure -->
+                            <div class="w-48 sm:w-60 h-auto filter drop-shadow-[0_12px_20px_rgba(212,175,55,0.45)] transition-transform duration-500 hover:scale-105">
+                                <svg viewBox="0 0 400 300" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="roofGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#b91c1c"/>
+                                            <stop offset="50%" stop-color="#991b1b"/>
+                                            <stop offset="100%" stop-color="#450a0a"/>
+                                        </linearGradient>
+                                        <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" stop-color="#fef3c7"/>
+                                            <stop offset="100%" stop-color="#fde68a"/>
+                                        </linearGradient>
+                                        <linearGradient id="doorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#78350f"/>
+                                            <stop offset="50%" stop-color="#92400e"/>
+                                            <stop offset="100%" stop-color="#451a03"/>
+                                        </linearGradient>
+                                    </defs>
+
+                                    <ellipse cx="200" cy="275" rx="170" ry="18" fill="#000" opacity="0.4"/>
+                                    <rect x="70" y="250" width="260" height="15" rx="3" fill="#b45309"/>
+                                    <rect x="90" y="240" width="220" height="12" rx="2" fill="#d97706"/>
+
+                                    <rect x="100" y="140" width="200" height="105" rx="4" fill="url(#wallGrad)" stroke="#b45309" stroke-width="2"/>
+                                    <rect x="110" y="140" width="16" height="105" fill="#f59e0b" rx="2"/>
+                                    <rect x="274" y="140" width="16" height="105" fill="#f59e0b" rx="2"/>
+
+                                    <polygon points="200,40 60,145 340,145" fill="url(#roofGrad)" stroke="#7f1d1d" stroke-width="3"/>
+                                    <polygon points="200,40 75,138 325,138" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.7"/>
+
+                                    <path d="M195 40 Q200 20 205 40 Z" fill="#fbbf24"/>
+                                    <circle cx="200" cy="20" r="6" fill="#f59e0b"/>
+
+                                    <rect x="165" y="165" width="70" height="80" rx="3" fill="url(#doorGrad)" stroke="#d97706" stroke-width="2"/>
+                                    <line x1="200" y1="165" x2="200" y2="245" stroke="#451a03" stroke-width="2"/>
+                                    <circle cx="192" cy="205" r="3" fill="#fbbf24"/>
+                                    <circle cx="208" cy="205" r="3" fill="#fbbf24"/>
+
+                                    <path d="M165 170 Q200 185 235 170" stroke="#f59e0b" stroke-width="4" fill="none"/>
+                                    <path d="M165 175 Q200 190 235 175" stroke="#ef4444" stroke-width="3" fill="none"/>
+
+                                    <rect x="125" y="165" width="28" height="35" rx="3" fill="#38bdf8" stroke="#b45309" stroke-width="2" opacity="0.9"/>
+                                    <line x1="139" y1="165" x2="139" y2="200" stroke="#b45309" stroke-width="1.5"/>
+                                    <line x1="125" y1="182.5" x2="153" y2="182.5" stroke="#b45309" stroke-width="1.5"/>
+
+                                    <rect x="247" y="165" width="28" height="35" rx="3" fill="#38bdf8" stroke="#b45309" stroke-width="2" opacity="0.9"/>
+                                    <line x1="261" y1="165" x2="261" y2="200" stroke="#b45309" stroke-width="1.5"/>
+                                    <line x1="247" y1="182.5" x2="275" y2="182.5" stroke="#b45309" stroke-width="1.5"/>
+
+                                    <path d="M135 238 Q140 248 145 238 Z" fill="#d97706"/>
+                                    <circle cx="140" cy="235" r="3" fill="#f59e0b" class="flame"/>
+
+                                    <path d="M255 238 Q260 248 265 238 Z" fill="#d97706"/>
+                                    <circle cx="260" cy="235" r="3" fill="#f59e0b" class="flame"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="font-cinzel text-amber-300 font-bold text-base sm:text-xl px-4 py-1 bg-red-950/90 rounded-full border border-amber-500/60 shadow-lg text-center" id="txt-family-name">SKPNJ Residence</div>
+
+                        <!-- HOTSPOT 1: WHAT? -->
+                        <div class="mt-4">
+                            <button onclick="window.openModal('modal-what')" class="relative group flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-red-950 font-bold px-5 py-2.5 rounded-full shadow-2xl border-2 border-amber-200 hover:scale-110 transition duration-300">
+                                <span class="absolute -inset-1 rounded-full bg-amber-400 opacity-75 hotspot-ring -z-10"></span>
+                                <span>🕉️</span>
+                                <span class="text-xs sm:text-sm font-bold" id="txt-hotspot-what">1. WHAT?</span>
+                            </button>
+                        </div>
+
+                        <!-- HOTSPOT 2 & 3 ROW -->
+                        <div class="flex gap-4 mt-3">
+                            <button onclick="window.openModal('modal-when')" class="relative group flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-red-950 font-bold px-4 py-2 rounded-full shadow-2xl border-2 border-amber-200 hover:scale-110 transition duration-300">
+                                <span class="absolute -inset-1 rounded-full bg-amber-400 opacity-75 hotspot-ring -z-10"></span>
+                                <span>⏰</span>
+                                <span class="text-xs sm:text-sm font-bold" id="txt-hotspot-when">2. WHEN?</span>
+                            </button>
+
+                            <button onclick="window.openModal('modal-where')" class="relative group flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-red-950 font-bold px-4 py-2 rounded-full shadow-2xl border-2 border-amber-200 hover:scale-110 transition duration-300">
+                                <span class="absolute -inset-1 rounded-full bg-amber-400 opacity-75 hotspot-ring -z-10"></span>
+                                <span>📍</span>
+                                <span class="text-xs sm:text-sm font-bold" id="txt-hotspot-where">3. WHERE?</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Plantain Tree SVG Illustration -->
+                    <div class="flex flex-col items-center z-10 w-24 sm:w-32 self-end">
+                        <svg viewBox="0 0 200 300" class="w-full h-auto drop-shadow-[0_5px_10px_rgba(0,0,0,0.8)] animate-pulse" style="animation-duration: 4s;" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M90 300 Q95 180 90 100 L110 100 Q105 180 110 300 Z" fill="#4a3525"/>
+                            <path d="M95 280 Q100 200 95 120" stroke="#332215" stroke-width="3" fill="none"/>
+                            <path d="M100 120 Q30 80 10 30 Q50 60 100 100 Z" fill="#2d6a4f"/>
+                            <path d="M100 100 Q170 60 190 20 Q150 50 100 90 Z" fill="#40916c"/>
+                            <path d="M100 80 Q20 30 5 -10 Q50 20 100 70 Z" fill="#52b788"/>
+                            <path d="M100 70 Q180 30 195 -5 Q140 20 100 60 Z" fill="#74c69d"/>
+                            <path d="M100 50 Q100 -20 100 -40 Q100 -20 100 40 Z" fill="#52b788"/>
+                            <g transform="translate(85, 110)">
+                                <path d="M15 0 Q20 20 15 40" stroke="#d4af37" stroke-width="4" fill="none"/>
+                                <ellipse cx="10" cy="15" rx="6" ry="12" fill="#ffd166" transform="rotate(-30 10 15)"/>
+                                <ellipse cx="20" cy="22" rx="6" ry="12" fill="#ffd166" transform="rotate(15 20 22)"/>
+                                <ellipse cx="15" cy="32" rx="6" ry="12" fill="#ffb703" transform="rotate(5 15 32)"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="welcome-section" class="w-full max-w-3xl mt-10 transition-all duration-700">
+            <div class="bg-gradient-to-b from-red-950/90 to-amber-950/90 rounded-3xl p-6 sm:p-8 border border-amber-500/40 shadow-2xl text-center relative overflow-hidden">
+                
+                <div class="text-3xl mb-2">🪔</div>
+                <h3 class="font-cursive text-3xl sm:text-4xl text-amber-300 mb-3" id="txt-welcome-title">Welcoming You With Open Hearts</h3>
+                
+                <p class="text-xs sm:text-base text-amber-100/90 leading-relaxed font-light max-w-2xl mx-auto mb-6" id="txt-welcome-msg">
+                    "With hearts full of gratitude and joy, we welcome you to share in the warmth and divine blessings of SKPNJ Residence. Your presence, love, and good wishes mean the world to us as we step into this new chapter of our lives!"
+                </p>
+
+                <!-- Direct WhatsApp Share Invitation Button -->
+                <div class="mb-6 flex flex-col gap-2 max-w-md mx-auto">
+                    <button onclick="window.shareOnWhatsApp()" class="w-full py-3 px-6 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl border border-emerald-300/40 transition transform active:scale-95">
+                        <span class="text-lg">📲</span>
+                        <span id="txt-share-btn">Share Invitation on WhatsApp</span>
+                    </button>
+                    <button onclick="window.configureShareUrl()" class="text-xs text-amber-300/70 hover:text-amber-200 underline transition py-1">
+                        ⚙️ Set / Change Web Link for WhatsApp
+                    </button>
+                </div>
+
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-6"></div>
+
+                <div class="mt-4">
+                    <h4 class="text-amber-300 font-bold text-xs sm:text-sm mb-4 uppercase tracking-wider" id="txt-contact-hosts">Contact Hosts (Tap to Call or WhatsApp)</h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
+                        
+                        <!-- Host 1: Sankarakumar -->
+                        <div class="bg-red-900/40 border border-amber-500/30 rounded-2xl p-4 flex flex-col items-center hover:border-amber-400/60 transition">
+                            <span class="text-xs text-amber-300/80 font-semibold mb-1">Host</span>
+                            <span class="text-amber-100 font-bold text-sm mb-3" id="lbl-host1-name">Sankarakumar</span>
+                            <div class="flex gap-2 w-full justify-center">
+                                <a href="tel:+919742086868" class="flex-1 py-2 px-3 rounded-full bg-amber-600/60 hover:bg-amber-500 text-amber-100 text-xs font-semibold flex items-center justify-center gap-1.5 border border-amber-400/40 transition shadow">
+                                    <span>📞</span> <span class="btn-call-text">Call</span>
+                                </a>
+                                <a href="https://wa.me/919742086868?text=Hello%20Sankarakumar!%20Receiving%20your%20SKPNJ%20Residence%20Housewarming%20invitation." target="_blank" class="flex-1 py-2 px-3 rounded-full bg-emerald-700/80 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1.5 border border-emerald-400/40 transition shadow">
+                                    <span>💬</span> <span class="btn-wa-text">WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Host 2: Pankajam -->
+                        <div class="bg-red-900/40 border border-amber-500/30 rounded-2xl p-4 flex flex-col items-center hover:border-amber-400/60 transition">
+                            <span class="text-xs text-amber-300/80 font-semibold mb-1">Host</span>
+                            <span class="text-amber-100 font-bold text-sm mb-3" id="lbl-host2-name">Pankajam</span>
+                            <div class="flex gap-2 w-full justify-center">
+                                <a href="tel:+916379269859" class="flex-1 py-2 px-3 rounded-full bg-amber-600/60 hover:bg-amber-500 text-amber-100 text-xs font-semibold flex items-center justify-center gap-1.5 border border-amber-400/40 transition shadow">
+                                    <span>📞</span> <span class="btn-call-text">Call</span>
+                                </a>
+                                <a href="https://wa.me/916379269859?text=Hello%20Pankajam!%20Receiving%20your%20SKPNJ%20Residence%20Housewarming%20invitation." target="_blank" class="flex-1 py-2 px-3 rounded-full bg-emerald-700/80 hover:bg-emerald-600 text-white text-xs font-semibold flex items-center justify-center gap-1.5 border border-emerald-400/40 transition shadow">
+                                    <span>💬</span> <span class="btn-wa-text">WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL 1: WHAT? -->
+    <div id="modal-what" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-gradient-to-b from-red-950 to-amber-950 rounded-3xl border-2 border-amber-400 max-w-md w-full p-6 text-center relative shadow-2xl">
+            <button onclick="window.closeModal('modal-what')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center hover:bg-amber-500/40 transition">✕</button>
+            <div class="text-4xl mb-2">🪔</div>
+            <h3 class="font-cinzel text-xl text-amber-300 font-bold mb-1" id="m-what-title">1. WHAT?</h3>
+            <p class="text-xs text-amber-200/70 mb-6" id="m-what-sub">Event Ceremony</p>
+            <div class="bg-red-900/60 rounded-2xl p-6 border border-amber-500/40 text-center mb-6 shadow-inner">
+                <div class="text-2xl font-bold text-amber-200" id="m-what-main">House Warming</div>
+            </div>
+            <button onclick="window.closeModal('modal-what')" class="btn-close px-6 py-2 rounded-full bg-amber-500 text-red-950 font-bold text-xs uppercase tracking-wider shadow">Close</button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: WHEN? -->
+    <div id="modal-when" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-gradient-to-b from-red-950 to-amber-950 rounded-3xl border-2 border-amber-400 max-w-md w-full p-6 text-center relative shadow-2xl">
+            <button onclick="window.closeModal('modal-when')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center hover:bg-amber-500/40 transition">✕</button>
+            <div class="text-4xl mb-2">🗓️</div>
+            <h3 class="font-cinzel text-xl text-amber-300 font-bold mb-1" id="m-when-title">2. WHEN?</h3>
+            <p class="text-xs text-amber-200/70 mb-6" id="m-when-sub">Date & Program Timings</p>
+            <div class="bg-red-900/50 rounded-2xl p-4 border border-amber-500/30 space-y-3 text-left shadow-inner">
+                <div class="bg-amber-500/10 p-2.5 rounded-xl border border-amber-400/30">
+                    <div class="text-xs text-amber-300 font-bold uppercase tracking-wider" id="m-label-date">Date</div>
+                    <div class="text-sm font-bold text-amber-100" id="m-val-date">Friday, 20th November 2026</div>
+                </div>
+                <div>
+                    <div class="text-xs text-amber-300/80 font-semibold uppercase" id="m-label-homam">Homam</div>
+                    <div class="text-sm font-bold text-amber-100" id="m-val-homam">5:00 AM - 8:00 AM</div>
+                </div>
+                <div class="border-t border-amber-500/20 pt-2">
+                    <div class="text-xs text-amber-300/80 font-semibold uppercase" id="m-label-milk">Boiling Milk</div>
+                    <div class="text-sm font-bold text-amber-100" id="m-val-milk">9:15 AM - 10:15 AM</div>
+                </div>
+                <div class="border-t border-amber-500/20 pt-2">
+                    <div class="text-xs text-amber-300/80 font-semibold uppercase" id="m-label-breakfast">Breakfast</div>
+                    <div class="text-sm font-bold text-amber-100" id="m-val-breakfast">7:00 AM - 9:00 AM</div>
+                </div>
+                <div class="border-t border-amber-500/20 pt-2">
+                    <div class="text-xs text-amber-300/80 font-semibold uppercase" id="m-label-lunch">Lunch</div>
+                    <div class="text-sm font-bold text-amber-100" id="m-val-lunch">12:00 PM - 1:00 PM</div>
+                </div>
+            </div>
+            <button onclick="window.closeModal('modal-when')" class="btn-close mt-6 px-6 py-2 rounded-full bg-amber-500 text-red-950 font-bold text-xs uppercase tracking-wider shadow">Close</button>
+        </div>
+    </div>
+
+    <!-- MODAL 3: WHERE? -->
+    <div id="modal-where" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-gradient-to-b from-red-950 to-amber-950 rounded-3xl border-2 border-amber-400 max-w-md w-full p-6 text-center relative shadow-2xl">
+            <button onclick="window.closeModal('modal-where')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center hover:bg-amber-500/40 transition z-10">✕</button>
+            <div class="text-4xl mb-2">📍</div>
+            <h3 class="font-cinzel text-xl text-amber-300 font-bold mb-1" id="m-where-title">3. WHERE?</h3>
+            <p class="text-xs text-amber-200/70 mb-4" id="m-where-sub">Venue Address</p>
+            
+            <div class="bg-red-900/50 rounded-2xl p-4 border border-amber-500/30 text-left mb-4 shadow-inner">
+                <div class="font-bold text-amber-200 text-sm mb-1" id="m-where-house">SKPNJ Residence Address</div>
+                <div class="text-xs sm:text-sm text-amber-100/90 leading-relaxed font-medium" id="m-where-address">
+                    5th Cross Thanumalayan Nagar Suchindrum Nagercoil Kanniyakumari District
+                </div>
+            </div>
+
+            <!-- Embedded Interactive Map -->
+            <div class="w-full h-44 rounded-2xl border border-amber-500/40 overflow-hidden mb-4 shadow-lg">
+                <iframe 
+                    class="w-full h-full border-0"
+                    loading="lazy"
+                    allowfullscreen
+                    src="https://maps.google.com/maps?q=5th+Cross+Thanumalayan+Nagar+Suchindrum+Nagercoil+Kanniyakumari&t=&z=16&ie=UTF8&iwloc=&output=embed">
+                </iframe>
+            </div>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=5th+Cross+Thanumalayan+Nagar+Suchindrum+Nagercoil+Kanniyakumari" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 mb-3 shadow transition">
+                <span>📍</span>
+                <span id="m-where-btn">Open Location in Google Maps</span>
+            </a>
+            <button onclick="window.closeModal('modal-where')" class="btn-close px-6 py-2 rounded-full bg-amber-500/30 text-amber-300 font-semibold text-xs hover:bg-amber-500/50 transition">Close</button>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 text-xs text-amber-300/60 border-t border-amber-500/20">
+        <p id="txt-footer">Designed with love for SKPNJ Residence Griha Pravesham | Warmly inviting you</p>
+    </footer>
+
+</body>
+</html>
